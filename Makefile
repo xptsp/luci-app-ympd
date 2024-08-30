@@ -5,7 +5,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_LICENSE:=Apache-2.0
 PKG_NAME:=luci-app-ympd
-PKG_VERSION:=1.0
+PKG_VERSION:=1.1
 PKG_RELEASE:=1
 PKG_MAINTAINER:=Douglas Orend <doug.orend2@gmail.com>
 
@@ -34,13 +34,13 @@ endef
 
 define Package/luci-app-ympd/install
 	$(INSTALL_DIR) $(1)/www/luci-static/resources/view/
-	$(INSTALL_DATA) ./htdocs/luci-static/resources/view/*.js $(1)/www/luci-static/resources/view/
+	$(INSTALL_DATA) ./htdocs/*.js $(1)/www/luci-static/resources/view/
 
 	$(INSTALL_DIR) $(1)/usr/share/luci/menu.d/
-	$(INSTALL_DATA) ./root/usr/share/luci/menu.d/luci-app-ympd.json $(1)/usr/share/luci/menu.d/
+	$(INSTALL_DATA) ./root/luci-menu.d.json $(1)/usr/share/luci/menu.d/luci-app-ympd.json
 
 	$(INSTALL_DIR) $(1)/usr/share/rpcd/acl.d
-	$(INSTALL_DATA) ./root/usr/share/rpcd/acl.d/luci-app-ympd.json $(1)/usr/share/rpcd/acl.d/
+	$(INSTALL_DATA) ./root/rpcd-acl.d.json $(1)/usr/share/rpcd/acl.d/luci-app-ympd.json
 endef
 
 $(eval $(call BuildPackage,luci-app-ympd))
